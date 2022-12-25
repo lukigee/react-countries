@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Outlet } from 'react-router-dom';
-import Container from '@mui/material/Container';
 import { Typography, Toolbar, Box, Link } from '@mui/material';
 
 export const Layout = () => {
@@ -15,9 +14,10 @@ export const Layout = () => {
     >
       <Toolbar
         sx={{
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
           bgcolor: '#28282a',
           color: '#fff',
+          '&.MuiToolbar-root': { paddingLeft: '5rem' },
         }}
       >
         <Typography variant="h4"> Countries page</Typography>

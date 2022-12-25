@@ -13,7 +13,7 @@ export const Map = (data) => {
 
   return (
     <MapContainer
-      style={{ height: '400px', width: '400px' }}
+      style={{ height: '400px', width: '400px', borderRadius: '1.5rem' }}
       center={position}
       zoom={5}
       scrollWheelZoom={false}

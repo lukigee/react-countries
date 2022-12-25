@@ -11,6 +11,7 @@ import {
   Link,
 } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import MapIcon from '@mui/icons-material/Map';
 import { Map } from './Map';
 
 const styles = {
@@ -23,18 +24,22 @@ const styles = {
     backgroundPosition: 'center',
   },
   cardMedia: {
-    width: 360,
-    backgroundPosition: 'inherit',
-    boxShadow: '0.2rem -0.2rem 0rem #ddd1ee',
+    width: 320,
+    height: 180,
+    boxShadow: '0.2rem 0.2rem 0rem #ddd1ee',
     borderRadius: '0.5rem',
     border: '2px solid #ddd1ee',
     paddingBottom: '5rem',
+    transform: 'scale(1, 0.8)',
   },
   mapBox: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundImage:
+      'linear-gradient(135deg, rgba(12, 83, 183, 0) 0%, rgba(12, 83, 183, 0.24) 100%)',
+    flex: 1,
   },
 };
 
@@ -44,73 +49,77 @@ export const CountryDetails = ({ data }) => {
   return (
     <Grid container component="main" sx={styles.container}>
       <Grid item xs={false} sm={false} md={5} sx={styles.leftGrid} />
-      <Grid item xs={12} sm={12} md={7} component={Paper} elevation={6} square>
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={7}
+        sx={{ display: 'flex', flexDirection: 'column' }}
+        component={Paper}
+        elevation={6}
+        square
+      >
         <Box
           sx={{
-            my: 8,
+            display: 'flex',
+            justifyContent: 'space-around',
             mx: 1,
+            mb: 1,
           }}
         >
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-around',
-            }}
-          >
-            <CardContent>
-              <Typography
-                sx={{ fontWeight: 'bold' }}
-                gutterBottom
-                component="h2"
-                variant="h5"
-              >
-                {data[0].name.common}
-              </Typography>
-              <Typography variant="body2">
-                <strong>Capital: </strong>
-                {data[0].capital.join()}
-              </Typography>
-              <Typography variant="body2">
-                <strong> Continents: </strong>
-                {data[0].continents.join()}
-              </Typography>
-              <Typography variant="body2">
-                <strong>Currencies: </strong>
-                {Object.values(data[0].currencies)
-                  .map((currency) => currency.name)
-                  .join(', ')}
-              </Typography>
-              <Typography variant="body2">
-                <strong>Languages: </strong>
-                {Object.values(data[0].languages).join(', ')}
-              </Typography>
-              <Typography variant="body2">
-                <strong>Population: </strong>{' '}
-                {data[0].population.toLocaleString()}
-              </Typography>
-            </CardContent>
-            <Hidden lgDown>
-              <CardMedia
-                sx={styles.cardMedia}
-                image={data[0].flags.png}
-                title="Image title"
-              />
-            </Hidden>
-          </Box>
+          <CardContent>
+            <Typography
+              sx={{ fontWeight: 'bold' }}
+              gutterBottom
+              component="h2"
+              variant="h5"
+            >
+              {data[0].name.common}
+            </Typography>
+            <Typography variant="body2">
+              <strong>Capital: </strong>
+              {data[0].capital.join()}
+            </Typography>
+            <Typography variant="body2">
+              <strong> Continents: </strong>
+              {data[0].continents.join()}
+            </Typography>
+            <Typography variant="body2">
+              <strong>Currencies: </strong>
+              {Object.values(data[0].currencies)
+                .map((currency) => currency.name)
+                .join(', ')}
+            </Typography>
+            <Typography variant="body2">
+              <strong>Languages: </strong>
+              {Object.values(data[0].languages).join(', ')}
+            </Typography>
+            <Typography variant="body2">
+              <strong>Population: </strong>{' '}
+              {data[0].population.toLocaleString()}
+            </Typography>
+          </CardContent>
+          <Hidden lgDown>
+            <CardMedia
+              sx={styles.cardMedia}
+              image={data[0].flags.png}
+              title="Image title"
+            />
+          </Hidden>
         </Box>
-        <Divider
-          variant="fullWidth"
-          sx={{ borderBottomWidth: 'medium', mb: 1 }}
-        />
+        <Divider variant="fullWidth" sx={{ borderBottomWidth: 'medium' }} />
         <Box sx={styles.mapBox}>
-          <Typography
-            sx={{ fontWeight: 'bold' }}
-            gutterBottom
-            component="h2"
-            variant="h5"
-          >
-            MAP
-          </Typography>
+          <Box sx={{ display: 'flex', gap: 1 }}>
+            <MapIcon />
+            <Typography
+              sx={{ fontWeight: 'bold' }}
+              gutterBottom
+              component="h2"
+              variant="h5"
+            >
+              MAP
+            </Typography>
+          </Box>
           {matches ? (
             <Map {...data} />
           ) : (

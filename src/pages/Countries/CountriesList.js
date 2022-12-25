@@ -4,9 +4,9 @@ import { CountryCard } from './CountryCard';
 
 export const CountriesList = ({ data }) => {
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={2}>
       {data.map((item) => (
-        <Grid key={item.cca2} item xs={12} sm={6} md={3}>
+        <Grid key={item.cca2} item xs={12} md={6} lg={4} xl={3}>
           <CountryCard {...item} />
         </Grid>
       ))}

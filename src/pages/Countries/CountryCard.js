@@ -19,6 +19,9 @@ const styles = {
     border: '1px solid #ddd1ee',
     borderRadius: '0.5em',
     boxShadow: '0.2em 0.2em 0 #ddd1ee',
+    transform: 'scale(0.8, 0.8)',
+    width: 320,
+    height: 180,
   },
 };
 
